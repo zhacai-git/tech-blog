@@ -1,9 +1,9 @@
 @echo off
 echo Website Update Started
 git add . 
-"C:\Program Files\Git\cmd\git.exe" commit -m "Website Updated"
-"C:\Program Files\Git\cmd\git.exe" push
+git commit -m "Website Updated"
+git push
 
-echo "Update done."
+echo Update done.
 
 pause
