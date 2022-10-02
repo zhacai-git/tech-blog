@@ -7,12 +7,10 @@ echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
-  echo ha
-  echo huhu:%%i
-  echo hu
+  echo %%i
+  echo %vars%
 )
 echo %vars:~-5%
-echo %vars%
 if "%vars:~-5%" == "date." (
   echo ACTION: Sync done.
   goto :addcommit
