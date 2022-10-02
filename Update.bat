@@ -6,9 +6,8 @@ echo ACTION: Generating static files.
 call hexo g
 echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
-set pullV = N/A
 for /f "tokens=*" %%i in ('git pull') do (
-  pullV = %%i
+  set pullV = %%i
   echo %%i
   echo %%i
   if "%%i" == "Already up to date." (
@@ -17,7 +16,11 @@ for /f "tokens=*" %%i in ('git pull') do (
     echo Sync Failed.
   )
 )
-echo "%pullV%"
+if defined pullV (
+  echo Run with no error.
+) else (
+  echo git error.
+)
 if %pullV:~-5% == "date." (
   echo ACTION: Sync done.
   exit 1
