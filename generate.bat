@@ -7,6 +7,7 @@ echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
+  echo %%i
 )
 if defined vars (
   if "%vars%" == "Already up to date." (
@@ -35,13 +36,12 @@ echo ACTION: Pushing to remote, it may takes time depending on your network....
 for /f "tokens=*" %%i in ('git push') do (
   set pushV = %%i
 )
-set result = %pushV:~-11%
-if "%result:~0,5%" == "errno" (
-  echo ERROR: Push Failed, please check for git output.
-  echo Git Opt:%pushV%
-) else (
+if "%pushV:~-5%" == "master" (
   echo ACTION: Push Success, Job done.
   echo -----Website Update Done-----
+) else (
+  echo ERROR: Push Failed, please check for git output.
+  @REM echo Git Opt:%pushV%
 )
 
 pause
