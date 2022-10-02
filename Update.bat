@@ -1,5 +1,5 @@
 @REM @echo on
-echo on
+@echo off
 Setlocal ENABLEDELAYEDEXPANSION
 echo -----Website Update Started-----
 echo ACTION: Generating static files.
