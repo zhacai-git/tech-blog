@@ -9,7 +9,7 @@ echo ACTION: Synchronizing from remote, it may takes time depending on your netw
 for /f "tokens=*" %%i in ('git pull') do (
   SET pullV = %%i
   echo %%i
-  echo %%i
+  echo %%i?
 )
 echo "%pullV%"
 if %pullV:~-5% == "date." (
