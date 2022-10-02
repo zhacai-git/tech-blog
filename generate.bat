@@ -1,6 +1,6 @@
 @echo off
+Setlocal ENABLEDELAYEDEXPANSION
 call hexo g
-@REM @echo off
 echo Website Update Started
 echo Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
@@ -23,7 +23,8 @@ echo Commit Done.
 goto :GitPush
 
 :SyncFail
-echo Git reported an error during pull action, please check the internet connection.
+echo Git reported an error during pull action, please check the git output for more information.
+echo Git Opt:%vars%
 pause
 exit 1
 
@@ -32,6 +33,12 @@ echo Pushing to remote.
 for /f "tokens=*" %%i in ('git push') do (
   set pushV = %%i
 )
-if "%pushV%" == ""
+set result = %pushV:~-11%
+if "%result:~0,5%" == "errno" (
+  echo Push Failed, please check for git output.
+  echo Git Opt:%pushV%
+) else (
+  echo "Push Success, Job done."
+)
 
 pause
