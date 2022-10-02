@@ -6,8 +6,9 @@ echo ACTION: Generating static files.
 call hexo g
 echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
+set pullV = N/A
 for /f "tokens=*" %%i in ('git pull') do (
-  SET pullV = %%i
+  %pullV% = %%i
   echo %%i
   echo %%i?
 )
