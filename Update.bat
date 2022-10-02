@@ -1,4 +1,4 @@
-@echo off
+@echo on
 Setlocal ENABLEDELAYEDEXPANSION
 echo -----Website Update Started-----
 echo ACTION: Generating static files.
@@ -9,6 +9,7 @@ for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
   echo %%i
 )
+echo %vars:~-5%
 if "%vars:~-5%" == "date." (
   echo ACTION: Sync done.
   goto :addcommit
@@ -34,7 +35,7 @@ echo ACTION: Pushing to remote, it may takes time depending on your network....
 for /f "tokens=*" %%i in ('git push') do (
   set pushV = %%i
 )
-if "%pushV:~-5%" == "master" (
+if "%pushV:~-6%" == "master" (
   echo ACTION: Push Success, Job done.
   echo -----Website Update Done-----
 ) else (
