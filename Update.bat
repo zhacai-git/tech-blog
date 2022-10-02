@@ -7,7 +7,9 @@ echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
+  echo ha
   echo %%i
+  echo hu
 )
 echo %vars:~-5%
 echo %vars%
