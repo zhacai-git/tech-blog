@@ -11,7 +11,7 @@ for /f "tokens=*" %%i in ('git pull') do (
   pullV = %%i
   echo %%i
   echo %%i
-  if %%i == "Already up to date." (
+  if "%%i" == "Already up to date." (
     echo Sync Success.
   ) else (
     echo Sync Failed.
