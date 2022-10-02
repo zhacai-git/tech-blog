@@ -10,7 +10,7 @@ for /f "tokens=*" %%i in ('git pull') do (
   echo %%i
 )
 if defined vars (
-  if "%vars%" == "Already up to date." (
+  if "%vars:~-5%" == "date." (
     goto :addcommit
   ) else (
     goto :SyncFail
@@ -27,8 +27,8 @@ goto :GitPush
 
 :SyncFail
 echo ERROR: Git reported an error during pull action, please check the git output for more information.
-echo Git Opt:%vars%
-pause
+echo ERROR: Pull failed, try to continue execution.
+goto :addcommit
 exit 1
 
 :GitPush
