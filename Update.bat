@@ -10,7 +10,7 @@ for /f "tokens=*" %%i in ('git pull') do (
   SET pullV = %%i
   echo %%i
   echo cutted: %pullV%
-  if "%pullV:~-5%" == "date." (
+  if "%%%i:~-5%" == "date." (
     echo ACTION: Sync done.
     exit 1
   @REM goto :addcommit
