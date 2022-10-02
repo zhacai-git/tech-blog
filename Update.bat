@@ -10,6 +10,7 @@ for /f "tokens=*" %%i in ('git pull') do (
   echo %%i
 )
 echo %vars:~-5%
+echo %vars%
 if "%vars:~-5%" == "date." (
   echo ACTION: Sync done.
   goto :addcommit
