@@ -9,7 +9,7 @@ echo ACTION: Synchronizing from remote, it may takes time depending on your netw
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
   echo %%i
-  echo %%vars
+  echo %vars%
 )
 echo %vars:~-5%
 if "%vars:~-5%" == "date." (
@@ -34,14 +34,14 @@ exit 1
 
 :GitPush
 echo ACTION: Pushing to remote, it may takes time depending on your network....
-for /f "tokens=*" %%i in ('git push') do (
-  set pushV = %%i
-)
-if "%pushV:~-6%" == "master" (
-  echo ACTION: Push Success, Job done.
-  echo -----Website Update Done-----
-) else (
-  echo ERROR: Push Failed, Website Update NOT DONE. Please check the git output for more information and rerun this script.
-  @REM echo Git Opt:%pushV%
-)
+@REM for /f "tokens=*" %%i in ('git push') do (
+@REM   set pushV = %%i
+@REM )
+@REM if "%pushV:~-6%" == "master" (
+@REM   echo ACTION: Push Success, Job done.
+@REM   echo -----Website Update Done-----
+@REM ) else (
+@REM   echo ERROR: Push Failed, Website Update NOT DONE. Please check the git output for more information and rerun this script.
+@REM   @REM echo Git Opt:%pushV%
+@REM )
 pause
