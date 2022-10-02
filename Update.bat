@@ -7,11 +7,11 @@ call hexo g
 echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
-  set pullV = %%i
   echo %%i
   echo %%i
   if "%%i" == "Already up to date." (
     echo Sync Success.
+    set pullV = %%i
   ) else (
     echo Sync Failed.
   )
