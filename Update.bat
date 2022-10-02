@@ -9,15 +9,17 @@ echo ACTION: Synchronizing from remote, it may takes time depending on your netw
 for /f "tokens=*" %%i in ('git pull') do (
   SET pullV = %%i
   echo %%i
-)
-echo cutted: %pullV%
-if "%pullV:~-5%" == "date." (
-  echo ACTION: Sync done.
-  exit 1
+  echo cutted: %pullV%
+  if "%pullV:~-5%" == "date." (
+    echo ACTION: Sync done.
+    exit 1
   @REM goto :addcommit
-) else (
-  goto :SyncFail
+  ) else (
+    goto :SyncFail
+  )
 )
+
+
 
 :addcommit
 git add . 
