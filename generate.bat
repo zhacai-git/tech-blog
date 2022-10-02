@@ -2,7 +2,7 @@
 call hexo g
 @REM @echo off
 echo Website Update Started
-echo Sync from remote...
+echo Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
 )
@@ -15,7 +15,7 @@ if defined vars (
 )
 
 :addcommit
-echo done.
+echo Sync done.
 git add . 
 echo added files.
 git commit -m "Website Update"
