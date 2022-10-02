@@ -6,28 +6,26 @@ echo ACTION: Generating static files.
 call hexo g
 echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
+set SyncFlag = 1
 for /f "tokens=*" %%i in ('git pull') do (
-  echo %%i
   echo %%i
   if "%%i" == "Already up to date." (
     echo Sync Success.
-    set pullV = %%i
+    set SyncFlag = 0
+    :goto addcommit
   ) else (
     echo Sync Failed.
   )
 )
-if defined pullV (
-  echo Run with no error.
-) else (
-  echo git error.
-)
-if %pullV:~-5% == "date." (
-  echo ACTION: Sync done.
-  exit 1
-@REM goto :addcommit
-) else (
-  goto :SyncFail
-)
+if %SyncFlag% == 1 :goto SyncFail
+
+@REM if %pullV:~-5% == "date." (
+@REM   echo ACTION: Sync done.
+@REM   exit 1
+@REM @REM goto :addcommit
+@REM ) else (
+@REM   goto :SyncFail
+@REM )
 
 
 :addcommit
@@ -40,8 +38,8 @@ goto :GitPush
 :SyncFail
 echo ERROR: Git reported an error during pull action, please check the git output for more information.
 echo ERROR: Pull failed, try to continue execution.
+pause
 goto :addcommit
-exit 1
 
 :GitPush
 echo ACTION: Pushing to remote, it may takes time depending on your network....
