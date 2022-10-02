@@ -8,7 +8,7 @@ echo ACTION: Synchronizing from remote, it may takes time depending on your netw
 for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
   echo %%i
-  echo %vars%
+  echo %%vars
 )
 echo %vars:~-5%
 if "%vars:~-5%" == "date." (
