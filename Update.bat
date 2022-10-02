@@ -7,13 +7,14 @@ call hexo g
 echo ACTION: Generate done.
 echo ACTION: Synchronizing from remote, it may takes time depending on your network...
 for /f "tokens=*" %%i in ('git pull') do (
-  set vars = %%i
+  SET pullV = %%i
   echo %%i
 )
-echo cutted: %vars%
-if "%vars:~-5%" == "date." (
+echo cutted: %pullV%
+if "%pullV:~-5%" == "date." (
   echo ACTION: Sync done.
-  goto :addcommit
+  exit 1
+  @REM goto :addcommit
 ) else (
   goto :SyncFail
 )
