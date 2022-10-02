@@ -9,13 +9,14 @@ for /f "tokens=*" %%i in ('git pull') do (
   set vars = %%i
   echo %%i
 )
-if defined vars (
-  if "%vars:~-5%" == "date." (
-    goto :addcommit
-  ) else (
-    goto :SyncFail
-  )
+if "%vars:~-5%" == "date." (
+  goto :addcommit
+) else (
+  goto :SyncFail
 )
+@REM if defined vars (
+  
+@REM )
 
 :addcommit
 echo ACTION: Sync done.
@@ -40,8 +41,7 @@ if "%pushV:~-5%" == "master" (
   echo ACTION: Push Success, Job done.
   echo -----Website Update Done-----
 ) else (
-  echo ERROR: Push Failed, please check for git output.
+  echo ERROR: Push Failed, Website Update not done, please check the git output for more information and rerun this script.
   @REM echo Git Opt:%pushV%
 )
-
 pause
