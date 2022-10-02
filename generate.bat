@@ -32,6 +32,6 @@ echo Pushing to remote.
 for /f "tokens=*" %%i in ('git push') do (
   set pushV = %%i
 )
-echo %pushV%
+if "%pushV%" == ""
 
 pause
