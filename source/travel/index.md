@@ -2,7 +2,7 @@
 title: 旅游
 date: 2023-06-14 15:44:14
 ---
-![1686731989527](image/fuji_mountain.jpg)
+![1686731989527](https://www.japan-travel.cn/images/fujiguide/SG010_6/SG010_6_750x503.jpg)
 
 ## 心灵场所、文化象征与地理奇观
 
