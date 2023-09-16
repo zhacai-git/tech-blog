@@ -122,9 +122,9 @@ menu:
   # tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  旅行: /travel/ || plane
-  美食: /food/ || spoon
-  文化: /culture/ || book
+  # 旅行: /travel/ || plane
+  # 美食: /food/ || spoon
+  # 文化: /culture/ || book
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
